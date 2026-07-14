@@ -1,4 +1,5 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1'
+const envUrl = import.meta.env.VITE_API_BASE_URL
+const BASE_URL = (envUrl ? envUrl.replace(/\/+$/, '') : 'http://localhost:8000/api/v1')
 
 class ApiError extends Error {
   status: number;
