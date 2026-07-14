@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { Card } from '../common/Card'
 import { Button } from '../common/Button'
 import { Send } from 'lucide-react'
+import { API_BASE_URL } from '../../env'
 
 
 interface Message {
@@ -32,12 +33,7 @@ export function ChatPanel() {
 
     try {
       const token = localStorage.getItem('access_token')
-      const envUrl = import.meta.env.VITE_API_BASE_URL
-      let baseUrl = envUrl ? envUrl.replace(/\/+$/, '') : 'http://localhost:8000/api/v1'
-      if (baseUrl && !baseUrl.endsWith('/api/v1')) {
-        baseUrl += '/api/v1'
-      }
-      const response = await fetch(`${baseUrl}/chat`, {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

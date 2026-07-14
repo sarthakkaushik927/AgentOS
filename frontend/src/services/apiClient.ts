@@ -1,9 +1,4 @@
-const envUrl = import.meta.env.VITE_API_BASE_URL
-let baseUrl = envUrl ? envUrl.replace(/\/+$/, '') : 'http://localhost:8000/api/v1'
-if (baseUrl && !baseUrl.endsWith('/api/v1')) {
-  baseUrl += '/api/v1'
-}
-const BASE_URL = baseUrl
+import { API_BASE_URL as BASE_URL } from '../env'
 
 class ApiError extends Error {
   status: number;
